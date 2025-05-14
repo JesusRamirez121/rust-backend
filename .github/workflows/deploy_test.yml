@@ -33,6 +33,4 @@ jobs:
       - name: Release App
         run: |
           heroku container:release web --app blog-platzi
-
-
           
