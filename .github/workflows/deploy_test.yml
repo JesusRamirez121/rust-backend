@@ -33,4 +33,7 @@ jobs:
       - name: Release App
         run: |
           heroku container:release web --app blog-platzi
-          
+        
+      - uses: grafana/k6-action@v0.2.0
+        with:
+          filename: test/stress.js
