@@ -4,21 +4,23 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Install Heroku CLI
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
+          heroku --version
 
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.14.10
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "blog-rust"
+          heroku_app_name: "blog-platzi"
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           usedocker: true
+          docker_heroku_process_type: web
